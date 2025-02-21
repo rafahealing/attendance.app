@@ -28,7 +28,7 @@ class AttendScreen extends StatelessWidget {
           ),
 
           // Content
-          Expanded(
+          const Expanded(
             child: Column(
               children: [
                 Expanded(

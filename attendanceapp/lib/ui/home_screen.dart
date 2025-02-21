@@ -1,7 +1,8 @@
 import 'package:attendanceapp/ui/absent/absent_screen.dart';
-import 'package:attendanceapp/ui/akun/akun_screen.dart';
+import 'package:attendanceapp/ui/icibos/blog_screen.dart';
 import 'package:attendanceapp/ui/attend/attend_screen.dart';
 import 'package:attendanceapp/ui/attend_history/attend_history_screen.dart';
+import 'package:attendanceapp/ui/icibos/history_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -42,9 +43,9 @@ class HomeScreen extends StatelessWidget {
                     splashColor: Colors.transparent,
                     onTap: () {
                       Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AbsentScreen()));
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AbsentScreen()));
                     },
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -71,9 +72,9 @@ class HomeScreen extends StatelessWidget {
                     splashColor: Colors.transparent,
                     onTap: () {
                       Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AbsentScreen()));
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AbsentScreen()));
                     },
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -100,9 +101,10 @@ class HomeScreen extends StatelessWidget {
                     splashColor: Colors.transparent,
                     onTap: () {
                       Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AttendanceHistoryScreen()));
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const AttendanceHistoryScreen()));
                     },
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -129,9 +131,9 @@ class HomeScreen extends StatelessWidget {
                     splashColor: Colors.transparent,
                     onTap: () {
                       Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => AkunScreen()));
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>const BlogScreen()));
                     },
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -142,7 +144,36 @@ class HomeScreen extends StatelessWidget {
                           width: 100,
                         ),
                         Text(
-                          "My Akun",
+                          "Blog Akang",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: InkWell(
+                    highlightColor: Colors.transparent,
+                    splashColor: Colors.transparent,
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>const HistoryScreen()));
+                    },
+                    child: const Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image(
+                          image: AssetImage('assets/images/ic_profile2.png'),
+                          height: 100,
+                          width: 100,
+                        ),
+                        Text(
+                          "History Akang",
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
@@ -177,5 +208,23 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String _formatTime(DateTime time) {
+    return "${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}:${time.second.toString().padLeft(2, '0')}";
+  }
+
+// FORMAT TANGGAL (Hari, DD/MM/YYYY)
+  String _formatDate(DateTime time) {
+    const List<String> days = [
+      "Minggu",
+      "Senin",
+      "Selasa",
+      "Rabu",
+      "Kamis",
+      "Jumat",
+      "Sabtu"
+    ];
+    return "${days[time.weekday % 7]}, ${time.day}/${time.month}/${time.year}";
   }
 }

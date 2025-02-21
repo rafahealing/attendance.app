@@ -34,6 +34,12 @@ class TestApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false, // remove debug banner
+      theme: ThemeData(
+        cardTheme: const CardTheme(surfaceTintColor: Colors.white),
+        dialogTheme: const DialogTheme(surfaceTintColor: Colors.white, backgroundColor: Colors.white),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
+        useMaterial3: true,
+      ),
       home: const HomeScreen(), // HomeScreen class
     );
   }
